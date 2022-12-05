@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<ul>
+		<li>Hello worldo</li>
+		<li th:each="p : ${pizza}" th:object="${p}">
+			[[*{name}]] - [[ *{price} ]]
+		</li>
+	</ul>
+
+</body>
+</html>
