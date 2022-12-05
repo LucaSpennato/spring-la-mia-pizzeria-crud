@@ -51,7 +51,7 @@ public class PizzaController {
 	@GetMapping("/pizza/edit/{id}")
 	public String editPizza(@PathVariable("id") int id, Model model) {
 		
-		Optional<Pizza> opt = ps.getPizzaById(id);
+		Optional<Pizza> opt = ps.findPizzaById(id);
 		Pizza pizza = opt.get();
 		
 		model.addAttribute("pizza", pizza);
@@ -59,10 +59,10 @@ public class PizzaController {
 		return "editpizza";
 	}
 	
-	@PostMapping("/pizza/edit")
-	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
+	@PostMapping("/pizza/store")
+	public String updatePizza(@Valid Pizza p) {
 		
-		ps.save(pizza);
+		ps.save(p);
 		
 		return "redirect:/";
 	}
