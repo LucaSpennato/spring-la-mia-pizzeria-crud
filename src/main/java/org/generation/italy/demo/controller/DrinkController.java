@@ -62,6 +62,18 @@ public class DrinkController {
 		return "edit-drink";
 	}
 	
+	@GetMapping("/show/{id}")
+	public String getDrink(@PathVariable("id") int id, Model model) {
+		
+		Optional<Drink> opt = ds.findDrinkById(id);
+		
+		Drink drink = opt.get();
+		
+		model.addAttribute("drink", drink);
+		
+		return "show-drink";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String deleteDrink(@PathVariable("id") int id) {
 		
