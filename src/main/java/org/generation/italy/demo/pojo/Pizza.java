@@ -1,5 +1,6 @@
 package org.generation.italy.demo.pojo;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table
@@ -16,14 +20,19 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
+	@NotNull
+	@Size(min=4, max=20)
+	@Column(length=20)
 	private String name;
 	
-	@Column
 	@Lob
+	@Nullable
+	@Size(max=10000)
+	@Column(length=10000)
 	private String description;
 	
 	@Column
+	@Min(value=1)
 	private int price;
 	
 	public Pizza() { }
