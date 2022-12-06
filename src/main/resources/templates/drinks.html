@@ -9,7 +9,7 @@
 	<h1>Drinks</h1>
 	<h3>Add a new drink: </h3>
 	<a href="/drinks/create"> <button>Add</button> </a>
-	<ul>
+	<ul th:unless="${drinks.size() < 1}">
 		<li th:each="drink : ${drinks}" th:object="${drink}">
 			[[ *{id} ]] - [[*{name}]] - [[ *{price} ]] $
 			<a th:href="@{/drinks/edit/{id} (id = *{id})}">edit</a>
@@ -17,7 +17,10 @@
 			<a th:href="@{/drinks/delete/{id} (id = *{id})}">delete</a>
 		</li>
 	</ul>
-
+	
+	<h5 th:if="${drinks.size() < 1}">
+		No drinks available
+	</h5>
 	
 </body>
 </html>
