@@ -8,10 +8,12 @@ import org.generation.italy.demo.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 
@@ -40,8 +42,18 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza/create")
-	public String storePizza(@Valid Pizza pizza) {
+	public String storePizza(@Valid Pizza pizza,
+			BindingResult br, RedirectAttributes redAtr ) {
 		
+		if(br.hasErrors()) {
+			
+			System.err.println("--------------------");
+			System.err.println(br.getAllErrors());
+			
+			redAtr.addFlashAttribute("errors", br.getAllErrors());
+			
+			return "redirect:/pizza/create";
+		}
 		ps.save(pizza);
 		
 		System.out.println(pizza);
@@ -61,8 +73,18 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza/update")
-	public String updatePizza(@Valid Pizza p) {
+	public String updatePizza(@Valid Pizza p,
+			BindingResult br, RedirectAttributes redAtr ) {
 		
+		if(br.hasErrors()) {
+			
+			System.err.println("--------------------");
+			System.err.println(br.getAllErrors());
+			
+			redAtr.addFlashAttribute("errors", br.getAllErrors());
+			
+			return "redirect:/drinks/create";
+		}
 		
 		ps.save(p);
 		

@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -19,17 +20,17 @@ public class Drink {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull
+	@NotEmpty(message="Name cannot be empty")
 	@Size(max=20)
 	@Column(length=20, unique=true)
 	private String name;
 	
 	@Nullable
-	@Size(max=10000)
+	@Size(max=10000, message="Max size is 10k character")
 	@Column(length=10000)
 	private String description;
 	
-	@NotNull
+	@NotNull(message="Price cannot be null")
 	@Min(value=1)
 	@Column
 	private int price;

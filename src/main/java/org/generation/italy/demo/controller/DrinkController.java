@@ -8,10 +8,12 @@ import org.generation.italy.demo.service.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 
@@ -43,7 +45,18 @@ public class DrinkController {
 	}
 	
 	@PostMapping("/store")
-	public String storeDrink(@Valid Drink d) {
+	public String storeDrink(@Valid Drink d,
+			BindingResult br, RedirectAttributes redAtr ) {
+		
+		if(br.hasErrors()) {
+			
+			System.err.println("--------------------");
+			System.err.println(br.getAllErrors());
+			
+			redAtr.addFlashAttribute("errors", br.getAllErrors());
+			
+			return "redirect:/drinks/create";
+		}
 		
 		ds.save(d);
 		
