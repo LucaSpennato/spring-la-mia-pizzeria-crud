@@ -9,10 +9,10 @@
 	<h1>Edit</h1>
 	<form 
 		method="POST" 
-		action="/pizza/store"
+		action="/pizza/update"
 		th:object="${pizza}" >
 	
-		<input type="number" name="id" th:field="*{id}" style="display:none">
+		<input type="number" name="id" th:field="*{id}">
 	
 		<label>Title</label>
 		<input type="text" name="title" th:field="*{name}">

@@ -6,10 +6,18 @@
 </head>
 <body>
 
+		<h5>
+			Add a new pizza: 
+			<a href="pizza/create"><button>Add</button></a>
+		</h5>
 	<ul>
-		<li>Hello worldo</li>
 		<li th:each="p : ${pizza}" th:object="${p}">
-			[[*{name}]] - [[ *{price} ]]
+			[[ *{getId()} ]] - [[*{name}]] - [[ *{price} ]]
+			<div>
+				<a th:href="@{pizza/show/{id} (id = *{id})}">Show</a>
+				<a th:href="@{pizza/edit/{id} (id = *{getId()})}">Edit</a>
+				<a th:href="@{pizza/delete/{id} (id = *{getId()})}">Delete</a>
+			</div>
 		</li>
 	</ul>
 
