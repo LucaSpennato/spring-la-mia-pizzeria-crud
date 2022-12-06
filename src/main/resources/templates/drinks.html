@@ -7,11 +7,14 @@
 <body>
 
 	<h1>Drinks</h1>
-	
-	<ul >
+	<h3>Add a new drink: </h3>
+	<a href="/drinks/create"> <button>Add</button> </a>
+	<ul>
 		<li th:each="drink : ${drinks}" th:object="${drink}">
 			[[ *{id} ]] - [[*{name}]] - [[ *{price} ]] $
-			
+			<a th:href="@{/drinks/edit/{id} (id = *{id})}">edit</a>
+			<a th:href="@{/drinks/show/{id} (id = *{id})}">show</a>
+			<a th:href="@{/drinks/delete/{id} (id = *{id})}">delete</a>
 		</li>
 	</ul>
 

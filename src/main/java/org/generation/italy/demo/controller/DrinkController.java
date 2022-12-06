@@ -62,4 +62,15 @@ public class DrinkController {
 		return "edit-drink";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String deleteDrink(@PathVariable("id") int id) {
+		
+		Optional<Drink> opt = ds.findDrinkById(id);
+		
+		Drink d = opt.get();
+		
+		ds.deleteDrink(d);
+		
+		return "redirect:/drinks";
+	}
 }
