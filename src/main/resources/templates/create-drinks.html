@@ -14,6 +14,10 @@
 			</li>
 		</ul>
 	</div>
+	
+	<div th:if="${uniqueException}">
+		[[${uniqueException}]]
+	</div>
 
 	<h1>Add a new drink</h1>
 	<form method="POST" action="/drinks/store" th:object="${drink}">

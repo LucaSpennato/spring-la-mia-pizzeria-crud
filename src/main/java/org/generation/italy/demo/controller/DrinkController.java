@@ -1,5 +1,6 @@
 package org.generation.italy.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +59,16 @@ public class DrinkController {
 			return "redirect:/drinks/create";
 		}
 		
-		ds.save(d);
+		try {
+			ds.save(d);			
+		}catch(Exception e) {
+			System.err.println("ERRROR----------------------------------------------------------------");
+			System.err.println(e.getMessage());
+			System.err.println("ERRROR----------------------------------------------------------------");
+			
+			redAtr.addFlashAttribute("uniqueException", e.getMessage() );
+			return "redirect:/drinks/create";
+		}
 		
 		return "redirect:/drinks";
 	}
