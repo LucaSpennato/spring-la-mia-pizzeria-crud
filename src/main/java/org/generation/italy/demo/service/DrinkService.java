@@ -19,6 +19,20 @@ public class DrinkService {
 		p.save(d);
 	}
 	
+	public void saveUnique(Drink d) throws Exception {
+		
+		List<Drink> drinks = p.findAll();
+		
+		for (Drink drink : drinks) {
+			
+			if(drink.getName().equals(d.getName())) {
+				throw new Exception("Name must be unique");
+			}
+			
+		}
+		p.save(d);
+	}
+	
 	public List<Drink> findAll(){
 		return p.findAll();
 	}

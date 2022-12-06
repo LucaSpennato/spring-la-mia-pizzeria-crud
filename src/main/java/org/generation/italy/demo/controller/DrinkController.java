@@ -60,13 +60,13 @@ public class DrinkController {
 		}
 		
 		try {
-			ds.save(d);			
+			ds.saveUnique(d);			
 		}catch(Exception e) {
 			System.err.println("ERRROR----------------------------------------------------------------");
 			System.err.println(e.getMessage());
 			System.err.println("ERRROR----------------------------------------------------------------");
 			
-			redAtr.addFlashAttribute("uniqueException", e.getMessage() );
+			redAtr.addFlashAttribute("uniqueException", "Name has to be unique" );
 			return "redirect:/drinks/create";
 		}
 		
