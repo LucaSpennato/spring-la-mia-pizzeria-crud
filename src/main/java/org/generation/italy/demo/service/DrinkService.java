@@ -29,7 +29,7 @@ public class DrinkService {
 				throw new Exception("Name must be unique");
 			}
 			
-		}
+		} 
 		p.save(d);
 	}
 	
@@ -43,5 +43,9 @@ public class DrinkService {
 	
 	public void deleteDrink(Drink d) {
 		p.delete(d);
+	}
+	
+	public List<Drink> findDrinkByName(String name){
+		return p.findByNameContainingIgnoreCase(name);
 	}
 }

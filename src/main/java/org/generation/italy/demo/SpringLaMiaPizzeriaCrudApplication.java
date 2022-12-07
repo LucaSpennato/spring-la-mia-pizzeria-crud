@@ -36,9 +36,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		
 		// Drinks 
 		
-		Drink d1 = new Drink("EINEKE", null, 3);
-		Drink d2 = new Drink("DREKER", null, 3);
-		Drink d3 = new Drink("TENNES", null, 5);
+		Drink d1 = new Drink("biretta", null, 3);
+		Drink d2 = new Drink("cochina?", null, 3);
+		Drink d3 = new Drink("qualcosa", null, 5);
 		
 		d.save(d1);
 		d.save(d2);

@@ -3,6 +3,7 @@ package org.generation.italy.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.generation.italy.demo.pojo.Drink;
 import org.generation.italy.demo.pojo.Pizza;
 import org.generation.italy.demo.repo.PizzaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,9 @@ public class PizzaService {
 	
 	public void deletePizzaById(int id) {
 		P.deleteById(id);
+	}
+	
+	public List<Pizza> findPizzaByName(String name){
+		return P.findByNameContainingIgnoreCase(name);
 	}
 }

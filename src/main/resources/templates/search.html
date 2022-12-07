@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h1>Search</h1>
+	<form method="GET">
+		<label>Name:</label>
+		<br>
+		<input name="query" th:value="${query}">
+		
+		<button type="submit">Search</button>
+	</form>
+	
+	<ul>
+		<li th:each="obj : ${objs}" th:object="${obj}">
+			[[ *{name} ]]
+		</li>
+	</ul>
+
+</body>
+</html>
