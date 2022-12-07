@@ -1,5 +1,7 @@
 package org.generation.italy.demo.pojo;
 
+import org.generation.italy.demo.interfaces.PriceableInt;
+
 import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +16,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table
-public class Pizza {
+public class Pizza implements PriceableInt  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +33,9 @@ public class Pizza {
 	@Column(length=10000)
 	private String description;
 	
-	@Column
+	@NotNull(message="Price cannot be null")
 	@Min(value=1)
+	@Column
 	private int price;
 	
 	public Pizza() { }
@@ -54,6 +57,7 @@ public class Pizza {
 	public String getDescription() {
 		return description;
 	}
+	@Override
 	public int getPrice() {
 		return price;
 	}
