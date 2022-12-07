@@ -111,18 +111,18 @@ public class PizzaController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/pizza/search")
-	public String searchPizza(Model model,
-				@RequestParam(name="query", required=false)String query) {
-		List<Pizza> pizzas = null;
-		if(query == null) {
-			pizzas = ps.findAll();
-		}else {
-			pizzas = ps.findPizzaByName(query);
-		}
-		
-		model.addAttribute("route","pizza");
-		model.addAttribute("objs",pizzas);
-		return "search";
-	}
+//	@GetMapping("/pizza/search")
+//	public String searchPizza(Model model,
+//				@RequestParam(name="query", required=false)String query) {
+//		List<Pizza> pizzas = null;
+//		if(query == null) {
+//			pizzas = ps.findAll();
+//		}else {
+//			pizzas = ps.findPizzaByName(query);
+//		}
+//		
+//		model.addAttribute("route","pizza");
+//		model.addAttribute("objs",pizzas);
+//		return "search";
+//	}
 }

@@ -110,21 +110,22 @@ public class DrinkController {
 		return "redirect:/drinks";
 	}
 	
-	@GetMapping("/search")
-	public String searchDrink(@RequestParam(name="query", required=false) String query,
-									Model model){
-		
-		List<Drink> drinks = null;
-		
-		if(query == null) {
-			drinks = ds.findAll();
-		}else {
-			drinks = ds.findDrinkByName(query);
-		}
-	
-		model.addAttribute("route","drinks");
-		model.addAttribute("objs",drinks);
-		
-		return "search";
-	}
+//	@GetMapping("/search")
+//	public String searchDrink(@RequestParam(name="query", required=false) String query,
+//									Model model){
+//		
+//		List<Drink> drinks = null;
+//		
+//		if(query == null) {
+//			drinks = ds.findAll();
+//		}else {
+//			drinks = ds.findDrinkByName(query);
+//		}
+//	
+//		model.addAttribute("route","drinks");
+//		model.addAttribute("query", query);
+//		
+//		model.addAttribute("objs",drinks);
+//		return "search";
+//	}
 }
