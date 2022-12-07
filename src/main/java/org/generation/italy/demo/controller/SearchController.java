@@ -27,16 +27,26 @@ public class SearchController {
 	@GetMapping
 	public String search(@RequestParam(name="query", required=false) String query, Model model) {
 		
-		
+	
 		List<Drink> drinks = query == null 
 				? ds.findAll()
 				: ds.findDrinkByName(query);
+		
 		List<Pizza> pizzas = query == null 
 				? ps.findAll()
 				: ps.findPizzaByName(query); 
 		
-		model.addAttribute("objs", drinks);
-		model.addAttribute("objs", pizzas);
+		
+//		List<Object> objs = new ArrayList<>();
+//		for (Drink d : drinks) {
+//			objs.add(d);
+//		}
+//		for (Pizza p : pizzas) {
+//			objs.add(p);
+//		}
+
+//		model.addAttribute("objs", objs);
+		
 		model.addAttribute("query", query);
 		
 		model.addAttribute("drinks",drinks);

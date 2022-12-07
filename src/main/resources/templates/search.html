@@ -16,15 +16,21 @@
 	</form>
 	
 	<ul>
+		<li th:each="obj : ${objs}" th:object="${obj}">
+			[[ *{id} ]] - [[ *{name} ]] - [[ *{price} ]] $
+			<div th:insert="frag :: list(${routePizza}, *{id})"></div>
+		</li>
+	</ul>
+	<ul>
 		<li th:each="obj : ${pizzas}" th:object="${obj}">
-			[[ *{name} ]]
+			[[ *{id} ]] - [[ *{name} ]] - [[ *{price} ]] $
 			<div th:insert="frag :: list(${routePizza}, *{id})"></div>
 		</li>
 	</ul>
 	
 	<ul>
 		<li th:each="obj : ${drinks}" th:object="${obj}">
-			[[ *{name} ]]
+			[[ *{id} ]] - [[ *{name} ]] - [[ *{price} ]] $
 			<div th:insert="frag :: list(${routeDrinks}, *{id})"></div>
 		</li>
 	</ul>
