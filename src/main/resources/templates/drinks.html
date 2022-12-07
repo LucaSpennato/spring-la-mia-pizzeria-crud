@@ -12,9 +12,7 @@
 	<ul th:unless="${drinks.size() < 1}">
 		<li th:each="drink : ${drinks}" th:object="${drink}">
 			[[ *{id} ]] - [[*{name}]] - [[ *{price} ]] $
-			<a th:href="@{/drinks/edit/{id} (id = *{id})}">edit</a>
-			<a th:href="@{/drinks/show/{id} (id = *{id})}">show</a>
-			<a th:href="@{/drinks/delete/{id} (id = *{id})}">delete</a>
+			<div th:insert="frag :: list(drinks,*{id})"></div>
 		</li>
 	</ul>
 	

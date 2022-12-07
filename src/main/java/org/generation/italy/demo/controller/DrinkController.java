@@ -122,6 +122,7 @@ public class DrinkController {
 			drinks = ds.findDrinkByName(query);
 		}
 	
+		model.addAttribute("route","drinks");
 		model.addAttribute("objs",drinks);
 		
 		return "search";

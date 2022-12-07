@@ -18,6 +18,7 @@
 	<ul>
 		<li th:each="obj : ${objs}" th:object="${obj}">
 			[[ *{name} ]]
+			<div th:insert="frag :: list(${route}, *{id})"></div>
 		</li>
 	</ul>
 

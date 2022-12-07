@@ -121,6 +121,7 @@ public class PizzaController {
 			pizzas = ps.findPizzaByName(query);
 		}
 		
+		model.addAttribute("route","pizza");
 		model.addAttribute("objs",pizzas);
 		return "search";
 	}
